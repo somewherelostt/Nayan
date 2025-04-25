@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Nayan - AI Vision Assistant</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <!-- Socket.IO for real-time communication -->
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Header -->
+      <header>
+        <div class="logo">
+          <i class="fas fa-eye logo-icon pulse"></i>
+          <h1>Nayan</h1>
+        </div>
+        <div class="tag-line">AI Vision Assistant</div>
+      </header>
+
+      <!-- Main Content -->
+      <main>
+        <div class="content-wrapper">
+          <!-- Vision Panel -->
+          <section class="vision-panel">
+            <div class="video-container">
+              <img
+                src="{{ url_for('video_feed') }}"
+                alt="Video Feed"
+                id="video-feed"
+              />
+              <div class="scan-overlay">
+                <div class="scan-line"></div>
+              </div>
+            </div>
+            <div class="controls">
+              <button id="btn-scene" class="control-btn">
+                <i class="fas fa-mountain"></i>
+                <span>Describe Scene</span>
+              </button>
+              <button id="btn-objects" class="control-btn">
+                <i class="fas fa-cube"></i>
+                <span>Identify Objects</span>
+              </button>
+              <button id="btn-text" class="control-btn">
+                <i class="fas fa-font"></i>
+                <span>Read Text</span>
+              </button>
+              <button id="btn-navigate" class="control-btn">
+                <i class="fas fa-compass"></i>
+                <span>Navigate</span>
+              </button>
+              <button id="btn-toggle-mode" class="control-btn special-btn">
+                <i class="fas fa-bolt"></i>
+                <span>Toggle Performance Mode</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- Dashboard Panel -->
+          <section class="dashboard">
+            <div class="dashboard-section">
+              <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+              <div class="announcements" id="announcements">
+                <div class="announcement">
+                  <p>
+                    Welcome to Nayan! I'm your AI vision assistant. Use the
+                    controls to interact with me.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="dashboard-section">
+              <h2><i class="fas fa-exclamation-triangle"></i> Alerts</h2>
+              <div class="alerts" id="alerts">
+                <!-- Alerts will be added here -->
+              </div>
+            </div>
+
+            <div class="dashboard-section">
+              <h2><i class="fas fa-map-marker-alt"></i> Environment</h2>
+              <div class="environment-info" id="environment-info">
+                <div class="env-card">
+                  <div class="env-title">Scene</div>
+                  <div class="env-value" id="scene-type">Unknown</div>
+                </div>
+                <div class="env-card">
+                  <div class="env-title">Objects</div>
+                  <div class="env-value" id="object-count">0</div>
+                </div>
+                <div class="env-card">
+                  <div class="env-title">People</div>
+                  <div class="env-value" id="people-count">0</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer>
+        <div class="status-bar">
+          <div class="status-item">
+            <i class="fas fa-microphone"></i>
+            <span id="mic-status">Voice: Inactive</span>
+          </div>
+          <div class="status-item">
+            <i class="fas fa-wifi"></i>
+            <span id="connection-status">Connected</span>
+          </div>
+          <div class="status-item">
+            <i class="fas fa-battery-three-quarters"></i>
+            <span id="system-status">System: OK</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Command Panel (Hidden by default) -->
+    <div class="command-panel" id="command-panel">
+      <div class="command-header">
+        <h3>Voice Commands</h3>
+        <button id="close-commands"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="command-list">
+        <div class="command-item">
+          <span class="command-name">"Describe"</span>
+          <span class="command-desc">Describe current scene</span>
+        </div>
+        <div class="command-item">
+          <span class="command-name">"Identify"</span>
+          <span class="command-desc">List objects in view</span>
+        </div>
+        <div class="command-item">
+          <span class="command-name">"Read"</span>
+          <span class="command-desc">Read text in view</span>
+        </div>
+        <div class="command-item">
+          <span class="command-name">"Navigate"</span>
+          <span class="command-desc">Get navigation guidance</span>
+        </div>
+        <div class="command-item">
+          <span class="command-name">"Help"</span>
+          <span class="command-desc">List available commands</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Help Button -->
+    <button id="help-button" class="floating-btn">
+      <i class="fas fa-question"></i>
+    </button>
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/nayan.js') }}"></script>
+  </body>
+</html>
