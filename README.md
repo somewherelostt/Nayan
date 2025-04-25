@@ -104,10 +104,6 @@ If you experience issues:
 5. Review the debug logs
 6. Try reducing resolution or FPS if performance is poor
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgments
 
 - OpenCV for computer vision capabilities
