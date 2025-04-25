@@ -1,0 +1,15 @@
+{
+  "name": "nayan",
+  "version": "1.0.0",
+  "description": "AI Vision Assistant",
+  "scripts": {
+    "build:css": "tailwindcss -i ./frontend/static/css/tailwind.css -o ./frontend/static/css/tailwind.output.css",
+    "watch:css": "tailwindcss -i ./frontend/static/css/tailwind.css -o ./frontend/static/css/tailwind.output.css --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.23",
+    "tailwindcss": "^3.3.2"
+  }
+}
