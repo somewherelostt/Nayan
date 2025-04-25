@@ -1,0 +1,29 @@
+# Core dependencies
+opencv-python>=4.5.0
+numpy>=1.19.0
+flask>=2.0.0
+flask-socketio>=5.0.0
+flask-cors>=3.0.0
+python-engineio>=4.0.0
+python-socketio>=5.0.0
+
+# AI and computer vision
+torch>=1.7.0
+torchvision>=0.8.0
+ultralytics>=8.0.0  # For YOLOv8
+pytesseract>=0.3.0  # For OCR
+pyttsx3>=2.90  # For text-to-speech
+
+# Audio processing
+pyaudio>=0.2.11
+wave>=0.0.2
+
+# Utilities
+pillow>=8.0.0
+requests>=2.25.0
+python-dotenv>=0.15.0
+
+# Development tools
+black>=20.8b1
+flake8>=3.8.0
+pytest>=6.0.0
