@@ -108,4 +108,3 @@ If you experience issues:
 
 - OpenCV for computer vision capabilities
 - Flask for web framework
-- All contributors and supporters
